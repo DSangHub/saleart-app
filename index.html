@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SaleArt.app | Etch-a-Sketch Style Reusable Sale Signs</title>
-  <meta name="description" content="Type a message in the app. Magnetic particles assemble into bold sale signs. Display, erase, and reuse forever. No more printed yard signs.">
+  <meta name="description" content="Type a message in the app. E-ink panels form bold sale signs. Display, erase, and reuse forever. No more printed yard signs.">
   <style>
     :root {
       --primary: #1a1a2e;
@@ -45,7 +45,6 @@
     .coming-soon { background: #e8f4fd; border: 1px solid #b8daff; border-radius: 10px; padding: 1.5rem; margin: 2rem 0; }
     .demo-input { margin-top: 1rem; }
     .demo-input input { padding: 0.6rem; font-size: 1rem; width: 220px; border-radius: 4px; border: 1px solid #ccc; text-align: center; }
-    .particles { position: absolute; width: 100%; height: 100%; pointer-events: none; }
     @media (max-width: 600px) {
       .hero h2 { font-size: 2rem; }
       header { flex-direction: column; gap: 0.5rem; }
@@ -67,17 +66,17 @@
   </header>
 
   <section class="hero">
-    <h2>Type It. Watch the Particles Form the Words.<br>Erase. Reuse. Forever.</h2>
-    <p>SaleArt.app turns ordinary sale signs into smart, reusable displays. Magnetic particles assemble into bold text from your phone. Display your message, clear it with one tap, and use the same sign again and again.</p>
+    <h2>Type It. Watch the Text Form.<br>Erase. Reuse. Forever.</h2>
+    <p>SaleArt.app turns ordinary sale signs into smart, reusable displays. First version uses proven e-ink panels. Type your message in the app, update the sign, clear it, and use the same physical sign again and again.</p>
     
     <div class="sign-demo">
       <div class="screen" id="signScreen">SALE</div>
     </div>
     <div class="demo-input">
       <input type="text" id="demoText" placeholder="Type a sale message..." value="SALE" maxlength="12">
-      <button class="cta-btn" style="margin-left:0.5rem; padding:0.6rem 1.2rem;" onclick="updateSign()">Form Text</button>
+      <button class="cta-btn" style="margin-left:0.5rem; padding:0.6rem 1.2rem;" onclick="updateSign()">Update Sign</button>
     </div>
-    <p style="margin-top:1.5rem; font-size:0.95rem; opacity:0.8;">Live demo — particles form on command</p>
+    <p style="margin-top:1.5rem; font-size:0.95rem; opacity:0.8;">Live demo — e-ink style update</p>
     <a href="#cta" class="cta-btn" style="margin-top:1.5rem;">Get Early Access</a>
   </section>
 
@@ -89,22 +88,22 @@
         <p>Type your message — “50% OFF”, “OPEN HOUSE”, “YARD SALE”, a price, or a QR prompt. Choose font size and style for distance readability.</p>
       </div>
       <div class="card">
-        <h4>2. Particles Assemble</h4>
-        <p>The sign’s controller activates magnetic fields. Tiny magnetic particles come together to form the letters, just like a smart Magna Doodle or electronic Etch A Sketch.</p>
+        <h4>2. E-ink Display Updates</h4>
+        <p>First version uses proven e-ink (e-paper) panels. The app sends the text; the sign updates in seconds and holds the image with almost no power — readable in sunlight, no backlight needed.</p>
       </div>
       <div class="card">
         <h4>3. Display, Erase, Reuse</h4>
-        <p>The text holds with almost no power. When you’re done, tap erase in the app. Particles clear. Same sign is ready for the next message — no printing, no waste.</p>
+        <p>The text stays visible indefinitely. When you’re done, update or clear it from the app. Same physical sign is ready for the next message — no printing, no waste.</p>
       </div>
     </div>
     <div class="highlight">
-      <strong>Inspired by classic magnetic drawing toys.</strong> SaleArt uses magnetophoretic technology (particles in a thick suspension pulled by magnetic fields) so the image stays visible and can be cleared on command. Practical outdoor versions may blend this aesthetic with proven low-power e-ink panels for maximum durability.
+      <strong>First version: E-ink panels.</strong> Inspired by the visual magic of magnetic particle / Etch A Sketch toys, SaleArt’s initial product uses reliable, low-power e-ink technology for outdoor-ready, app-controlled sale signs. Magnetic particle versions remain a future exploration.
     </div>
   </section>
 
   <section id="versions">
     <h3>Three Versions</h3>
-    <p style="text-align:center; max-width:800px; margin:0 auto 2rem; color:var(--gray);">Choose the form factor that fits your sale. All versions are app-controlled, reusable, and erase with one tap.</p>
+    <p style="text-align:center; max-width:800px; margin:0 auto 2rem; color:var(--gray);">Choose the form factor that fits your sale. All versions use e-ink panels, are app-controlled, reusable, and update with one tap.</p>
     <div class="grid">
       <div class="card">
         <h4>1. Standard Rectangular</h4>
@@ -112,7 +111,7 @@
       </div>
       <div class="card">
         <h4>2. Chat Bubble</h4>
-        <p>Fun speech-bubble shape. App includes color selection for the particle text and a choice of fonts (bold block, condensed, playful). Great for retail, markets, and casual events.</p>
+        <p>Fun speech-bubble shape. App includes color selection (where supported by the e-ink panel) and a choice of fonts (bold block, condensed, playful). Great for retail, markets, and casual events.</p>
       </div>
       <div class="card">
         <h4>3. AirTag Security</h4>
@@ -120,7 +119,7 @@
       </div>
     </div>
     <div class="highlight">
-      <strong>App controls everything:</strong> Type your message, pick the font, choose particle color (where supported), send to the sign, and erase when done. Security pairing works through the same app.
+      <strong>App controls everything:</strong> Type your message, pick the font, choose color options (where supported), send to the sign, and update or clear when done. Security pairing works through the same app.
     </div>
   </section>
 
@@ -132,12 +131,12 @@
         <p>Large, high-contrast letters designed to be read from the street or across a room. Short messages that pop.</p>
       </div>
       <div class="card">
-        <h4>One-Tap Erase & Reuse</h4>
+        <h4>One-Tap Update & Reuse</h4>
         <p>No more stacks of printed signs in the garage. One physical sign handles every sale, open house, or event.</p>
       </div>
       <div class="card">
         <h4>Color & Font Choice</h4>
-        <p>Chat Bubble and select models let you choose particle color and font style in the app for better branding and readability.</p>
+        <p>Chat Bubble and select models let you choose colors and font style in the app for better branding and readability.</p>
       </div>
       <div class="card">
         <h4>AirTag-Style Security</h4>
@@ -178,7 +177,7 @@
 
   <section id="cta" style="text-align: center; background: #f8f9fa; padding: 3rem 2rem;">
     <h3>Join the SaleArt Waitlist <span class="badge">Coming Soon</span></h3>
-    <p style="margin: 1rem 0 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Be first to get the reusable magnetic-particle sale signs and the SaleArt.app that controls them. Type once. Display. Erase. Use again.</p>
+    <p style="margin: 1rem 0 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Be first to get the reusable e-ink sale signs and the SaleArt.app that controls them. Type once. Display. Update. Use again.</p>
     
     <div class="coming-soon">
       <h4>Early Access</h4>
@@ -209,7 +208,7 @@
     </form>
 
     <p style="margin-top:2rem; font-size:0.85rem; color:var(--gray); max-width:800px; margin-left:auto; margin-right:auto;">
-      SaleArt.app is a concept in active development. Magnetic particle / magnetophoretic technology is inspired by classic drawing toys and modern ferrofluid displays. Practical product versions will prioritize durability, readability, and low power. Not currently available for purchase.
+      SaleArt.app is a concept in active development. First version uses proven e-ink (e-paper) panels for reliable, low-power, sunlight-readable displays controlled by the app. Magnetic particle aesthetics inspire the design. Not currently available for purchase.
     </p>
   </section>
 
@@ -233,7 +232,6 @@
     document.getElementById('demoText').addEventListener('keypress', function(e) {
       if (e.key === 'Enter') updateSign();
     });
-    // Subtle particle-like pulse on load
     setTimeout(() => {
       const screen = document.getElementById('signScreen');
       screen.style.transition = 'opacity 0.6s';
