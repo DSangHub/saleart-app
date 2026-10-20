@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaleArt.app | Etch-a-Sketch Style Reusable Sale Signs</title>
+  <meta name="description" content="Type a message in the app. Magnetic particles assemble into bold sale signs. Display, erase, and reuse forever. No more printed yard signs.">
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --accent: #e94560;
+      --secondary: #16213e;
+      --light: #f8f9fa;
+      --dark: #0f3460;
+      --gray: #6c757d;
+      --particle: #ff6b6b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height: 1.6; color: #333; background: #fff; }
+    header { background: var(--primary); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    header h1 { font-size: 1.6rem; font-weight: 700; }
+    header h1 span { color: var(--accent); }
+    nav a { color: white; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; }
+    nav a:hover { color: var(--accent); }
+    .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+    .hero h2 { font-size: 2.8rem; margin-bottom: 1rem; font-weight: 800; letter-spacing: -0.5px; }
+    .hero p { font-size: 1.25rem; max-width: 820px; margin: 0 auto 2rem; opacity: 0.95; }
+    .sign-demo { background: #111; border: 8px solid #c1121f; border-radius: 12px; padding: 2rem; max-width: 500px; margin: 2rem auto; box-shadow: 0 10px 40px rgba(0,0,0,0.4); position: relative; }
+    .sign-demo .screen { background: #f5f5f5; color: #111; min-height: 140px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; font-weight: 900; letter-spacing: 2px; border-radius: 4px; position: relative; overflow: hidden; }
+    .sign-demo .screen::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px); pointer-events: none; }
+    .cta-btn { background: var(--accent); color: white; padding: 0.9rem 2.2rem; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .cta-btn:hover { background: #c1121f; }
+    section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    section h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .card { background: var(--light); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent); }
+    .card h4 { color: var(--dark); margin-bottom: 0.5rem; }
+    .highlight { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1.5rem; margin: 2rem 0; border-radius: 6px; }
+    footer { background: var(--primary); color: white; text-align: center; padding: 2rem; font-size: 0.9rem; }
+    .form-group { margin-bottom: 1.2rem; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: 600; color: var(--dark); }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.7rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
+    form { max-width: 500px; margin: 0 auto; }
+    .badge { background: var(--accent); color: white; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; margin-left: 0.5rem; vertical-align: middle; }
+    .coming-soon { background: #e8f4fd; border: 1px solid #b8daff; border-radius: 10px; padding: 1.5rem; margin: 2rem 0; }
+    .demo-input { margin-top: 1rem; }
+    .demo-input input { padding: 0.6rem; font-size: 1rem; width: 220px; border-radius: 4px; border: 1px solid #ccc; text-align: center; }
+    .particles { position: absolute; width: 100%; height: 100%; pointer-events: none; }
+    @media (max-width: 600px) {
+      .hero h2 { font-size: 2rem; }
+      header { flex-direction: column; gap: 0.5rem; }
+      nav a { margin: 0.3rem; }
+      .sign-demo .screen { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sale<span>Art</span>.app</h1>
+    <nav>
+      <a href="#how">How It Works</a>
+      <a href="#versions">Versions</a>
+      <a href="#features">Features</a>
+      <a href="#uses">Use Cases</a>
+      <a href="#cta">Join Waitlist</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Type It. Watch the Particles Form the Words.<br>Erase. Reuse. Forever.</h2>
+    <p>SaleArt.app turns ordinary sale signs into smart, reusable displays. Magnetic particles assemble into bold text from your phone. Display your message, clear it with one tap, and use the same sign again and again.</p>
+    
+    <div class="sign-demo">
+      <div class="screen" id="signScreen">SALE</div>
+    </div>
+    <div class="demo-input">
+      <input type="text" id="demoText" placeholder="Type a sale message..." value="SALE" maxlength="12">
+      <button class="cta-btn" style="margin-left:0.5rem; padding:0.6rem 1.2rem;" onclick="updateSign()">Form Text</button>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.95rem; opacity:0.8;">Live demo — particles form on command</p>
+    <a href="#cta" class="cta-btn" style="margin-top:1.5rem;">Get Early Access</a>
+  </section>
+
+  <section id="how">
+    <h3>How SaleArt Works</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>1. Write in the App</h4>
+        <p>Type your message — “50% OFF”, “OPEN HOUSE”, “YARD SALE”, a price, or a QR prompt. Choose font size and style for distance readability.</p>
+      </div>
+      <div class="card">
+        <h4>2. Particles Assemble</h4>
+        <p>The sign’s controller activates magnetic fields. Tiny magnetic particles come together to form the letters, just like a smart Magna Doodle or electronic Etch A Sketch.</p>
+      </div>
+      <div class="card">
+        <h4>3. Display, Erase, Reuse</h4>
+        <p>The text holds with almost no power. When you’re done, tap erase in the app. Particles clear. Same sign is ready for the next message — no printing, no waste.</p>
+      </div>
+    </div>
+    <div class="highlight">
+      <strong>Inspired by classic magnetic drawing toys.</strong> SaleArt uses magnetophoretic technology (particles in a thick suspension pulled by magnetic fields) so the image stays visible and can be cleared on command. Practical outdoor versions may blend this aesthetic with proven low-power e-ink panels for maximum durability.
+    </div>
+  </section>
+
+  <section id="versions">
+    <h3>Three Versions</h3>
+    <p style="text-align:center; max-width:800px; margin:0 auto 2rem; color:var(--gray);">Choose the form factor that fits your sale. All versions are app-controlled, reusable, and erase with one tap.</p>
+    <div class="grid">
+      <div class="card">
+        <h4>1. Standard Rectangular</h4>
+        <p>Classic Etch A Sketch style frame. Bold, high-visibility rectangular display perfect for yards, driveways, and storefronts. Maximum readability at a distance.</p>
+      </div>
+      <div class="card">
+        <h4>2. Chat Bubble</h4>
+        <p>Fun speech-bubble shape. App includes color selection for the particle text and a choice of fonts (bold block, condensed, playful). Great for retail, markets, and casual events.</p>
+      </div>
+      <div class="card">
+        <h4>3. AirTag Security</h4>
+        <p>Available on any version: built-in or attachable AirTag-style tracker. Locate your sign if it walks away. Peace of mind for outdoor and unattended displays.</p>
+      </div>
+    </div>
+    <div class="highlight">
+      <strong>App controls everything:</strong> Type your message, pick the font, choose particle color (where supported), send to the sign, and erase when done. Security pairing works through the same app.
+    </div>
+  </section>
+
+  <section id="features" style="background:#f8f9fa;">
+    <h3>Built for Real Sale Signs</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Bold, Distance-Readable Text</h4>
+        <p>Large, high-contrast letters designed to be read from the street or across a room. Short messages that pop.</p>
+      </div>
+      <div class="card">
+        <h4>One-Tap Erase & Reuse</h4>
+        <p>No more stacks of printed signs in the garage. One physical sign handles every sale, open house, or event.</p>
+      </div>
+      <div class="card">
+        <h4>Color & Font Choice</h4>
+        <p>Chat Bubble and select models let you choose particle color and font style in the app for better branding and readability.</p>
+      </div>
+      <div class="card">
+        <h4>AirTag-Style Security</h4>
+        <p>Optional tracker integration. Pair once in the app and keep an eye on your sign from anywhere.</p>
+      </div>
+      <div class="card">
+        <h4>App Templates & Fonts</h4>
+        <p>Ready-made templates for common sales. Custom text, simple graphics, prices, and QR codes. Update from anywhere.</p>
+      </div>
+      <div class="card">
+        <h4>Outdoor Ready Path</h4>
+        <p>Weatherproof housing, solar or long battery options, Bluetooth/WiFi/NFC control. Designed for yards, storefronts, and events.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="uses">
+    <h3>Who Uses SaleArt?</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Yard & Garage Sales</h4>
+        <p>Change “SALE” to “EVERYTHING MUST GO” or a specific price without printing a new sign.</p>
+      </div>
+      <div class="card">
+        <h4>Real Estate</h4>
+        <p>Update open house times, price changes, or “Just Listed” on the same board. Agents control it from their phone.</p>
+      </div>
+      <div class="card">
+        <h4>Retail & Pop-Ups</h4>
+        <p>Window or counter signs that flip from “20% OFF” to “BOGO” in seconds. Perfect for rotating promotions.</p>
+      </div>
+      <div class="card">
+        <h4>Events & Markets</h4>
+        <p>Reusable signage for farmers markets, craft fairs, or temporary storefronts. Pack light, update on the spot.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" style="text-align: center; background: #f8f9fa; padding: 3rem 2rem;">
+    <h3>Join the SaleArt Waitlist <span class="badge">Coming Soon</span></h3>
+    <p style="margin: 1rem 0 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Be first to get the reusable magnetic-particle sale signs and the SaleArt.app that controls them. Type once. Display. Erase. Use again.</p>
+    
+    <div class="coming-soon">
+      <h4>Early Access</h4>
+      <p>Hardware + app in development. Sign up for updates on the first kits (indoor/outdoor options) and app launch.</p>
+    </div>
+
+    <form action="mailto:hello@saleart.app" method="post" enctype="text/plain">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label for="use">Primary Use</label>
+        <select id="use" name="use">
+          <option value="">Select...</option>
+          <option value="Yard Sales">Yard / Garage Sales</option>
+          <option value="Real Estate">Real Estate</option>
+          <option value="Retail">Retail / Store</option>
+          <option value="Events">Events / Markets</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <button type="submit" class="cta-btn">Join Waitlist</button>
+    </form>
+
+    <p style="margin-top:2rem; font-size:0.85rem; color:var(--gray); max-width:800px; margin-left:auto; margin-right:auto;">
+      SaleArt.app is a concept in active development. Magnetic particle / magnetophoretic technology is inspired by classic drawing toys and modern ferrofluid displays. Practical product versions will prioritize durability, readability, and low power. Not currently available for purchase.
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 SaleArt.app — Type it. Form it. Erase it. Reuse it.</p>
+  </footer>
+
+  <script>
+    function updateSign() {
+      const input = document.getElementById('demoText');
+      const screen = document.getElementById('signScreen');
+      let text = input.value.trim().toUpperCase() || 'SALE';
+      if (text.length > 12) text = text.substring(0, 12);
+      screen.style.opacity = '0';
+      setTimeout(() => {
+        screen.textContent = text;
+        screen.style.opacity = '1';
+        screen.style.transition = 'opacity 0.4s ease';
+      }, 200);
+    }
+    document.getElementById('demoText').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') updateSign();
+    });
+    // Subtle particle-like pulse on load
+    setTimeout(() => {
+      const screen = document.getElementById('signScreen');
+      screen.style.transition = 'opacity 0.6s';
+      screen.style.opacity = '0.7';
+      setTimeout(() => screen.style.opacity = '1', 400);
+    }, 800);
+  </script>
+</body>
+</html>
