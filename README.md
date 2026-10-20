@@ -2,7 +2,7 @@
 
 Etch-a-Sketch style reusable sale signs controlled by an app.
 
-Magnetic particles assemble into bold text from prompts written in the SaleArt.app. Display, erase, and reuse the same physical sign.
+**First version:** E-ink (e-paper) panels for reliable, low-power, sunlight-readable displays. App controls text, fonts, and updates. Magnetic particle aesthetic inspires the design (future exploration).
 
 ## Three Versions
 - **Standard Rectangular** — Classic frame for maximum distance readability
